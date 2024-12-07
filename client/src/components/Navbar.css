@@ -1,0 +1,65 @@
+/* Navbar container */
+.navbar {
+  background-color: #333; /* Dark background */
+  padding: 15px 30px; /* Add padding */
+  display: flex; /* Flexbox for layout */
+  justify-content: space-between; /* Space out logo and nav links */
+  align-items: center; /* Align items vertically */
+  position: sticky; /* Sticky navbar */
+  top: 0;
+  z-index: 1000; /* Ensure navbar stays on top */
+}
+
+/* Navbar logo */
+.navbar .logo {
+  font-size: 28px; /* Larger font for logo */
+  font-weight: bold;
+  color: #fff; /* White color */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Navbar links container */
+.nav-links {
+  display: flex; /* Horizontal layout for nav links */
+  list-style: none; /* Remove bullet points */
+  gap: 20px; /* Add space between links */
+}
+
+/* Individual nav link styles */
+.nav-links li {
+  font-size: 18px; /* Font size for links */
+}
+
+/* Link styles */
+.nav-links a {
+  text-decoration: none; /* Remove underline */
+  color: white; /* White color for text */
+  padding: 10px 20px; /* Add padding for spacing */
+  background-color: #4CAF50; /* Green background for buttons */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+/* Hover effect for links */
+.nav-links a:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Responsive design: Stack links vertically on smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack logo and links vertically */
+    align-items: center; /* Center the items */
+  }
+
+  .nav-links {
+    flex-direction: column; /* Stack the links vertically */
+    gap: 10px; /* Reduce gap between links */
+    margin-top: 20px; /* Add space between logo and links */
+  }
+
+  .nav-links a {
+    padding: 12px 25px; /* Adjust padding for better touch targets */
+  }
+}

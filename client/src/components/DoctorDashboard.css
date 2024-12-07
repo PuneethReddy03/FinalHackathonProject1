@@ -1,0 +1,77 @@
+/* DoctorDashboard.css */
+
+/* Container for the Doctor Dashboard */
+.doctor-dashboard {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  .doctor-dashboard h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .doctor-dashboard h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: red;
+    text-align: center;
+    font-size: 1.2em;
+  }
+  
+  /* Appointment list styling */
+  .doctor-dashboard ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .doctor-dashboard li {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .doctor-dashboard li strong {
+    font-weight: bold;
+  }
+  
+  .doctor-dashboard li p {
+    margin: 5px 0;
+  }
+  
+  /* Loading and no appointments message */
+  .doctor-dashboard p {
+    font-size: 1.2em;
+    text-align: center;
+  }
+  
+  .doctor-dashboard .no-appointments {
+    font-size: 1.2em;
+    text-align: center;
+    color: #888;
+  }
+  
+  /* Styling for the list items */
+  .doctor-dashboard li {
+    border-left: 5px solid #007bff;
+    margin-bottom: 15px;
+    padding-left: 20px;
+  }
+  
+  .doctor-dashboard li:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
