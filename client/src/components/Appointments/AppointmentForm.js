@@ -11,9 +11,8 @@ const AppointmentForm = () => {
   const [appointmentTime, setAppointmentTime] = useState('');
   const [reason, setReason] = useState('');
   const [doctor, setDoctor] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');  // New state for success message
+  const [successMessage, setSuccessMessage] = useState('');
 
-  // List of doctors based on disease type
   const doctorOptions = {
     Fever: ['General Doctor', 'Pediatrician'],
     Cold: ['General Doctor', 'ENT Specialist'],
@@ -23,7 +22,6 @@ const AppointmentForm = () => {
     Other: ['General Doctor'],
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,13 +37,16 @@ const AppointmentForm = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/appointments', appointmentData);
+      const response = await axios.post('http://localhost:5000/api/appointments', appointmentData, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
       console.log('Appointment booked successfully:', response.data);
 
-      // Display success message
       setSuccessMessage('Appointment booked successfully!');
 
-      // Reset the form
       setName('');
       setAge('');
       setGender('');
@@ -54,9 +55,10 @@ const AppointmentForm = () => {
       setAppointmentTime('');
       setReason('');
       setDoctor('');
+
+      setTimeout(() => setSuccessMessage(''), 5000); // Clear success message after 5 seconds
     } catch (error) {
-      console.error('Error booking appointment:', error);
-      // Handle error
+      console.error('Error booking appointment:', error.response || error.message);
     }
   };
 
@@ -71,7 +73,6 @@ const AppointmentForm = () => {
           onChange={(e) => setName(e.target.value)}
           required
         />
-
         <input
           type="number"
           placeholder="Age"
@@ -79,7 +80,6 @@ const AppointmentForm = () => {
           onChange={(e) => setAge(e.target.value)}
           required
         />
-
         <select
           value={gender}
           onChange={(e) => setGender(e.target.value)}
@@ -90,12 +90,11 @@ const AppointmentForm = () => {
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
-
         <select
           value={diseaseType}
           onChange={(e) => {
             setDiseaseType(e.target.value);
-            setDoctor(''); // Reset the doctor when the disease changes
+            setDoctor('');
           }}
           required
         >
@@ -107,8 +106,6 @@ const AppointmentForm = () => {
           <option value="Stomachache">Stomachache</option>
           <option value="Other">Other</option>
         </select>
-
-        {/* Conditionally render the doctor select dropdown based on disease type */}
         {diseaseType && (
           <select
             value={doctor}
@@ -121,15 +118,12 @@ const AppointmentForm = () => {
             ))}
           </select>
         )}
-
         <input
           type="date"
           value={appointmentDate}
           onChange={(e) => setAppointmentDate(e.target.value)}
           required
         />
-
-        {/* Conditionally render the time picker if a date is selected */}
         {appointmentDate && (
           <input
             type="time"
@@ -138,17 +132,13 @@ const AppointmentForm = () => {
             required
           />
         )}
-
         <textarea
           placeholder="Symptoms"
           value={reason}
           onChange={(e) => setReason(e.target.value)}
         ></textarea>
-
         <button type="submit">Book Appointment</button>
       </form>
-
-      {/* Display success message if appointment is booked successfully */}
       {successMessage && (
         <div className="success-message">
           <p>{successMessage}</p>

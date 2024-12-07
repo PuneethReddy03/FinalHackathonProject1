@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const cookieParser = require('cookie-parser'); // for cookie parsing
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');  // Import auth routes
@@ -11,14 +10,13 @@ const app = express(); // Initialize app here first
 
 // Middleware to parse incoming requests
 app.use(express.json());
-app.use(cookieParser()); // Use cookie-parser middleware
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: 'http://localhost:3000',
   methods: 'GET,POST',
   allowedHeaders: 'Content-Type,Authorization',
-  credentials: true,  // Allow cookies to be sent with requests
+  credentials: true,  // Allow credentials for secure requests
 }));
 
 // MongoDB connection
